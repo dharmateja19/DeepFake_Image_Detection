@@ -1,0 +1,5 @@
+data/*
+new_img/*
+deepfake_detector_efficientnetb0.pth
+deepfake_detector_mobilenetv2.pth
+deepfake_detector_resnet50.pth

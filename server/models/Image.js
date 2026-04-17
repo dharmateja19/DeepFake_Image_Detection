@@ -31,6 +31,10 @@ const imageSchema = new mongoose.Schema({
 
     size: {
         type: Number   
+    },
+
+    localPath: {
+        type: String
     }
 
 }, { timestamps: true });

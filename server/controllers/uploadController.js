@@ -16,7 +16,8 @@ export const uploadImage = async (req, res) => {
             format: result.format,
             width: result.width,
             height: result.height,
-            size: result.bytes
+            size: result.bytes,
+            localPath: req.file.path
         })
         await image.save()
 

@@ -1,22 +1,26 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
 const resultSchema = new mongoose.Schema({
-    userId: { type: String, required: true },
-    imageId: { type: String, required: true },
-
-    imageUrl: String,  
-
-    prediction: {
-        type: String,
-        enum: ['Real', 'Fake'],
-        required: true
+	imageId: {
+		type: mongoose.Schema.Types.ObjectId,
+		ref: "Image",
+	},
+    userId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
     },
+    imageUrl: String,
+    finalResult: String,
+    confidence: Number,
 
-    confidence: {
-        type: Number,
-        required: true
-    }
-
+    efficientnet: {
+        label: String,
+        conf: Number,
+    },
+    mobilenet: {
+    	label: String,
+      	conf: Number,
+    },
 }, { timestamps: true });
 
 const Result = mongoose.model("Result", resultSchema);
