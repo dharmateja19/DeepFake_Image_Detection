@@ -102,7 +102,6 @@
 // 	}
 // };
 
-
 import cloudinary from "../config/cloudinary.js";
 import Image from "../models/Image.js";
 import Result from "../models/Result.js";
@@ -164,7 +163,7 @@ export const uploadImage = async (req, res) => {
 		});
 		await image.save();
 
-		const filePath = req.file.path; 
+		const filePath = req.file.path;
 
 		const [eff, mob] = await Promise.all([
 			runModel(effPath, filePath),
@@ -176,19 +175,20 @@ export const uploadImage = async (req, res) => {
 
 		let finalLabel, finalConf;
 
+		const effWeight = 0.6;
+		const mobWeight = 0.4;
+
 		if (eff.label === mob.label) {
 			finalLabel = eff.label;
-			finalConf = (effConf + mobConf) / 2;
+			finalConf = effConf * effWeight + mobConf * mobWeight;
 		} else {
-			if (effConf > 0.95) {
-				finalLabel = eff.label;
-				finalConf = effConf;
-			} else {
-				finalLabel = mob.label;
-				finalConf = mobConf;
-			}
-		}
+			const effScore = eff.label === "REAL" ? effConf * effWeight : 0;
+			const mobScore = mob.label === "REAL" ? mobConf * mobWeight : 0;
 
+			finalLabel = effScore > mobScore ? "REAL" : "FAKE";
+			finalConf = Math.max(effConf, mobConf);
+		}
+		
 		await Result.create({
 			userId: req.user.id,
 			imageId: image._id,

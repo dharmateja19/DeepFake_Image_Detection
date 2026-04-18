@@ -7,7 +7,6 @@ import sys
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-# Class names (check your training output)
 class_names = ['Fake', 'Real']
 
 # Transform
@@ -20,7 +19,6 @@ transform = transforms.Compose([
     )
 ])
 
-# Load model
 import os
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
