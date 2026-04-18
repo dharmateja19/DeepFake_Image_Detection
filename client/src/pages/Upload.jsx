@@ -56,10 +56,9 @@ const Upload = () => {
 			const res = await api.post("/images/upload", formData, {
 				headers: {
 					Authorization: `Bearer ${token}`,
-						"Content-Type": "multipart/form-data",
-					},
+					"Content-Type": "multipart/form-data",
 				},
-			);
+			});
 
 			setResult(res.data);
 		} catch (err) {
@@ -123,20 +122,37 @@ const Upload = () => {
 				)}
 
 				<div className="flex gap-3 mt-5">
-					<button
-						onClick={handleUpload}
-						disabled={loading}
-						className="w-full bg-linear-to-r from-blue-600 to-indigo-600 text-white p-3 rounded-lg hover:from-blue-700 hover:to-indigo-700"
-					>
-						{loading ? "Analyzing..." : "Upload & Predict"}
-					</button>
+					{loading ? (
+						<button
+							disabled
+							className="w-full bg-gray-400 text-white p-3 rounded-lg cursor-not-allowed"
+						>
+							Analyzing...
+						</button>
+					) : result ? (
+						<button
+							onClick={handleReset}
+							className="w-full bg-green-600 text-white p-3 rounded-lg hover:bg-green-700 cursor-pointer"
+						>
+							Detect New Image
+						</button>
+					) : (
+						<>
+							<button
+								onClick={handleUpload}
+								className="w-full bg-linear-to-r from-blue-600 to-indigo-600 text-white p-3 rounded-lg hover:from-blue-700 hover:to-indigo-700 cursor-pointer"
+							>
+								Upload & Predict
+							</button>
 
-					<button
-						onClick={handleReset}
-						className="w-full bg-gray-400 text-white p-3 rounded-lg hover:bg-gray-500"
-					>
-						Reset
-					</button>
+							<button
+								onClick={handleReset}
+								className="w-full bg-gray-400 text-white p-3 rounded-lg hover:bg-gray-500 cursor-pointer"
+							>
+								Reset
+							</button>
+						</>
+					)}
 				</div>
 			</div>
 
