@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axios from "axios";
+import api from "../api/api.js";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { toast } from "react-toastify";
 import { useNavigate, Link } from "react-router-dom";
@@ -24,17 +24,14 @@ const Register = () => {
 		setLoading(true);
 
 		try {
-			const res = await axios.post(
-				"http://localhost:3000/api/auth/register",
-				form
-			);
+			const res = await api.post("/auth/register", form);
 
 			const data = res.data;
 
 			toast.success("Registration successful");
 
-			localStorage.setItem("token", data.token);
-			localStorage.setItem("user", JSON.stringify(data.user));
+			sessionStorage.setItem("token", data.token);
+			sessionStorage.setItem("user", JSON.stringify(data.user));
 
 			navigate("/upload");
 		} catch (err) {

@@ -1,4 +1,4 @@
-import axios from "axios";
+import api from "../api/api.js";
 import { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { toast } from "react-toastify";
@@ -19,15 +19,12 @@ const Login = () => {
 		setLoading(true);
 
 		try {
-			const res = await axios.post(
-				"http://localhost:3000/api/auth/login",
-				form
-			);
+			const res = await api.post("/auth/login", form);
 
 			const data = res.data;
 
-			localStorage.setItem("token", data.token);
-			localStorage.setItem("user", JSON.stringify(data.user));
+			sessionStorage.setItem("token", data.token);
+			sessionStorage.setItem("user", JSON.stringify(data.user));
 
 			toast.success("Login successful");
 			navigate("/upload");

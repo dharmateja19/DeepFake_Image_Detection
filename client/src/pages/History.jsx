@@ -1,4 +1,4 @@
-import axios from "axios";
+import api from "../api/api.js";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
@@ -8,11 +8,11 @@ const History = () => {
 	const [filter, setFilter] = useState("ALL");
 	const [loading, setLoading] = useState(true);
 
-	const token = localStorage.getItem("token");
+	const token = sessionStorage.getItem("token");
 
 	const fetchHistory = async () => {
 		try {
-			const res = await axios.get("http://localhost:3000/api/images/history", {
+			const res = await api.get("/images/history", {
 				headers: { Authorization: `Bearer ${token}` },
 			});
 

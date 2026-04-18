@@ -3,10 +3,10 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 const Navbar = () => {
 	const navigate = useNavigate();
 	const location = useLocation();
-	const token = localStorage.getItem("token");
+	const token = sessionStorage.getItem("token");
 
 	const handleLogout = () => {
-		localStorage.removeItem("token");
+		sessionStorage.removeItem("token");
 		navigate("/login");
 	};
 

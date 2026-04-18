@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import axios from "axios";
+import api from "../api/api.js";
 import { toast } from "react-toastify";
 
 const Upload = () => {
@@ -10,7 +10,7 @@ const Upload = () => {
 	const [dragActive, setDragActive] = useState(false);
 
 	const fileInputRef = useRef(null);
-	const token = localStorage.getItem("token");
+	const token = sessionStorage.getItem("token");
 
 	const handleFile = (selected) => {
 		if (!selected) return;
@@ -53,12 +53,9 @@ const Upload = () => {
 		formData.append("image", file);
 
 		try {
-			const res = await axios.post(
-				"http://localhost:3000/api/images/upload",
-				formData,
-				{
-					headers: {
-						Authorization: `Bearer ${token}`,
+			const res = await api.post("/images/upload", formData, {
+				headers: {
+					Authorization: `Bearer ${token}`,
 						"Content-Type": "multipart/form-data",
 					},
 				},
