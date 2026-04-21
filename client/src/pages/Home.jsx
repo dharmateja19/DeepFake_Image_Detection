@@ -4,7 +4,6 @@ const Home = () => {
 	return (
 		<div className="bg-linear-to-br from-indigo-100 via-blue-100 to-purple-100 min-h-screen">
 
-			{/* Hero Section */}
 			<div className="text-center py-24 px-6">
 				<h1 className="text-5xl font-extrabold mb-6 text-gray-800">
 					Deepfake Image Detection
@@ -31,8 +30,7 @@ const Home = () => {
 					</Link>
 				</div>
 			</div>
-
-			{/* Features Section */}
+			
 			<div className="py-20 px-6 max-w-6xl mx-auto">
 				<h2 className="text-3xl font-bold text-center mb-14 text-gray-800">
 					Key Features
@@ -84,13 +82,9 @@ const Home = () => {
 			<div className="text-center py-20">
 				<div className="bg-linear-to-r from-blue-600 to-indigo-600 text-white rounded-3xl max-w-4xl mx-auto p-10 shadow-xl">
 					
-					<h2 className="text-3xl font-bold mb-4">
+					<h2 className="text-3xl font-bold mb-12">
 						Start Detecting Deepfakes Now
 					</h2>
-
-					<p className="mb-6 text-blue-100">
-						Upload your image and get instant AI-powered results.
-					</p>
 
 					<Link
 						to="/upload"
