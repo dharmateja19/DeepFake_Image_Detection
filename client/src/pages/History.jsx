@@ -103,9 +103,6 @@ const History = () => {
 								</span>
 							</p>
 
-							{/* <p className="text-xs text-gray-400 mt-2">
-								{new Date(img.createdAt).toLocaleString()}
-							</p> */}
 						</div>
 					</div>
 				))}

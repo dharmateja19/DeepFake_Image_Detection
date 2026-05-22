@@ -58,12 +58,10 @@ const Dashboard = () => {
 
 	return (
 		<div className="min-h-screen bg-gradient-to-br from-gray-100 via-purple-100 to-pink-100 p-6">
-			{/* Header */}
 			<h1 className="text-4xl font-extrabold text-center mb-10 text-gray-800">
 				Dashboard
 			</h1>
 
-			{/* 👤 Profile Section */}
 			<div className="max-w-5xl mx-auto mb-8">
 				<div className="bg-white/90 backdrop-blur-md rounded-3xl shadow-xl p-6 flex flex-col sm:flex-row items-center justify-between gap-6">
 					<div className="flex items-center gap-4">
@@ -83,7 +81,6 @@ const Dashboard = () => {
 				</div>
 			</div>
 
-			{/* Stats Cards */}
 			<div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-10 max-w-5xl mx-auto">
 				<div className="bg-white/80 p-6 rounded-2xl shadow-lg text-center">
 					<p className="text-gray-500">Total Images</p>
@@ -101,7 +98,6 @@ const Dashboard = () => {
 				</div>
 			</div>
 
-			{/* Distribution */}
 			<div className="bg-white/90 p-6 rounded-3xl shadow-xl mb-10 max-w-5xl mx-auto">
 				<h2 className="text-xl font-semibold mb-6 text-gray-800">
 					Prediction Distribution
@@ -136,7 +132,6 @@ const Dashboard = () => {
 				</div>
 			</div>
 
-			{/* Recent Uploads */}
 			<div className="bg-white/90 p-6 rounded-3xl shadow-xl max-w-5xl mx-auto">
 				<h2 className="text-xl font-semibold mb-6 text-gray-800">
 					Recent Uploads
